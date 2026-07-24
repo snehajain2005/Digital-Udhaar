@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-paper text-ink-700 font-body antialiased;
+}
+
+.dark body {
+  @apply bg-ink-800 text-paper;
+}
+
+::selection {
+  background: #C9962C;
+  color: #1C2B39;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(28,43,57,0.18); border-radius: 8px; }
+.dark ::-webkit-scrollbar-thumb { background: rgba(250,247,240,0.18); }
+
+/* Visible keyboard focus */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, [tabindex]:focus-visible {
+  outline: 2px solid #C9962C;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.ledger-card {
+  @apply relative bg-white dark:bg-ink-600 rounded-xl2 shadow-card border border-ink-700/5 dark:border-paper/10 overflow-hidden;
+}
+
+.ledger-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+  background: #B33A3A;
+  opacity: 0.7;
+}
+
+.skeleton {
+  background: linear-gradient(90deg, rgba(28,43,57,0.06) 25%, rgba(28,43,57,0.12) 37%, rgba(28,43,57,0.06) 63%);
+  background-size: 400px 100%;
+  @apply animate-shimmer rounded-lg;
+}
+
+.dark .skeleton {
+  background: linear-gradient(90deg, rgba(250,247,240,0.06) 25%, rgba(250,247,240,0.14) 37%, rgba(250,247,240,0.06) 63%);
+  background-size: 400px 100%;
+}
